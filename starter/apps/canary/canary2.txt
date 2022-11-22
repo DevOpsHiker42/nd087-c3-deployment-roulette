@@ -1,0 +1,17 @@
+[cloudshell-user@ip-10-0-60-248 canary]$ kubectl get pods --all-namespaces
+NAMESPACE     NAME                           READY   STATUS    RESTARTS   AGE
+kube-system   aws-node-2qn89                 1/1     Running   0          40m
+kube-system   aws-node-ckbz6                 1/1     Running   0          39m
+kube-system   coredns-f47955f89-924hs        1/1     Running   0          44m
+kube-system   coredns-f47955f89-dzwtc        1/1     Running   0          44m
+kube-system   kube-proxy-l4s4p               1/1     Running   0          40m
+kube-system   kube-proxy-vz6jd               1/1     Running   0          39m
+udacity       blue-8475cbdf46-nr25l          1/1     Running   0          35m
+udacity       blue-8475cbdf46-pqnr9          1/1     Running   0          35m
+udacity       blue-8475cbdf46-vf8n7          1/1     Running   0          35m
+udacity       canary-v1-64598c676f-kd2r6     1/1     Running   0          35m
+udacity       canary-v1-64598c676f-whwkq     1/1     Running   0          35m
+udacity       canary-v2-5dc9c56687-m54vq     1/1     Running   0          31s
+udacity       canary-v2-5dc9c56687-pr284     1/1     Running   0          33s
+udacity       hello-world-794458d64d-76t7n   1/1     Running   0          35m
+[cloudshell-user@ip-10-0-60-248 canary]$
