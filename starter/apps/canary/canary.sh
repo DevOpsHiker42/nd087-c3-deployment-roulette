@@ -19,6 +19,7 @@ ShowInfo()
 }
 
 function deploy_canaries {
+  # Get replica counts
   current_v1_replicas=$(kubectl get pods -n udacity | grep -c canary-v1)
   current_v2_replicas=$(kubectl get pods -n udacity | grep -c canary-v2)
 
@@ -48,6 +49,11 @@ function deploy_canaries {
 
     # Monitor v2 deployment
     monitor_v2_deploy
+
+    # Update replica counts
+    current_v1_replicas=$(kubectl get pods -n udacity | grep -c canary-v1)
+    current_v2_replicas=$(kubectl get pods -n udacity | grep -c canary-v2)
+
   done
 
   # Finally scale v1 replicas to target in case we didn't quite get there
