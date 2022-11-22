@@ -63,7 +63,7 @@ function monitor_v2_deploy {
   # Monitor the v2 deployment every 5 seconds as it rolls out
   attempts=0
   rollout_status_cmd="kubectl rollout status deployment/canary-v2 -n udacity"
-  until $rollout_status_cmd || [ $attempts -eq 60 ]; do
+  until $rollout_status_cmd || [ $attempts -eq 12 ]; do
     $rollout_status_cmd
     attempts=$((attempts + 1))
     sleep 5
@@ -75,7 +75,7 @@ function monitor_v1_scale {
   # Monitor the v1 scale every 5 seconds
   attempts=0
   rollout_status_cmd="kubectl rollout status deployment/canary-v1 -n udacity"
-  until $rollout_status_cmd || [ $attempts -eq 60 ]; do
+  until $rollout_status_cmd || [ $attempts -eq 12 ]; do
     $rollout_status_cmd
     attempts=$((attempts + 1))
     sleep 5
