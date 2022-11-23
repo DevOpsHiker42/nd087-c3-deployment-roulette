@@ -25,9 +25,12 @@ wait_for_green_service()
   done 
 
   # Wait for the service to be reachable
+  # N.B. Curl test based on discussion at:
+  # https://stackoverflow.com/questions/11904772
+
   green_svc_hostname=$(kubectl get service green-svc -n udacity -o json \
                      | jq -r .status.loadBalancer.ingress[].hostname)
-  curlcmd="curl --output /dev/null --silent --head --fail $green_svc_hostname"
+  curlcmd="curl --output /dev/null --silent --fail $green_svc_hostname"
   until $curlcmd; do
     echo "Waiting for Green service: " ${green_svc_hostname}
     sleep 1
