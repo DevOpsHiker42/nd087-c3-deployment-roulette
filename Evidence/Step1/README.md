@@ -1,4 +1,4 @@
-# Debugging Steps for hello-world Application
+# Step 1: Debugging Steps for hello-world Application
 1. Checked load balancer in AWS web console. No obvious issues, so proceeded to check load balancer targets, which were found to be unhealthy ![deployment-troubleshooting_01_Unhealthy_Targets.png](deployment-troubleshooting_01_Unhealthy_Targets.png)
 
 2. Checked pods and found a crashed hello-world pod ![deployment-troubleshooting_02_Crashed_Pod.png](deployment-troubleshooting_02_Crashed_Pod.png)
