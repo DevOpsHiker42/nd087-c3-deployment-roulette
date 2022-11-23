@@ -12,7 +12,7 @@ ShowInfo()
   echo
 }
 
-wait_for_deploy()
+wait_for_green_service()
 {
   # Monitor the deployment every 5 seconds
   attempts=0
@@ -23,6 +23,11 @@ wait_for_deploy()
     sleep 5
     echo "...deploying..."
   done 
+
+  # Wait for the service to be reachable
+  green_svc_hostname=`kubectl get service green-svc -n udacity -o json \
+                      | jq -r .status.loadBalancer.ingress[].hostname`
+  echo "green-svc hostname: " ${green_svc_hostname}
 }
 
 ########################################################################
@@ -36,7 +41,7 @@ ShowInfo
 kubectl apply -f green.yml
 
 # Wait for the new deployment to successfully roll out and the service to be reachable
-wait_for_deploy
+wait_for_green_service
 
 echo "***********************************************"
 echo "*** ALL DONE: Green deployment successful!  ***"
