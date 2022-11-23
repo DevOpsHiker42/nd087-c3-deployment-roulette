@@ -29,7 +29,7 @@ wait_for_green_service()
                      | jq -r .status.loadBalancer.ingress[].hostname)
   curlcmd="curl --output /dev/null --silent --head --fail $green_svc_hostname"
   until $curlcmd; do
-    echo "Waiting for green-svc hostname: " ${green_svc_hostname}
+    echo "Waiting for Green service: " ${green_svc_hostname}
     sleep 1
   done
 }
@@ -40,6 +40,9 @@ wait_for_green_service()
 
 # Show script information
 ShowInfo
+
+# Apply green configmap
+kubectl apply -f index_green_html.yml
 
 # Execute a green deployment for the service apps/blue-green
 kubectl apply -f green.yml
